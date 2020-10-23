@@ -1,7 +1,10 @@
 package Task;
 
+import Framework.Report;
+import Framework.Screenshot;
 import Framework.Waits;
 import PageObjects.HomePage;
+import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
@@ -28,8 +31,16 @@ public class HomeTask {
 
     private void homeValidation(){
 
-        Assertions.assertTrue(homePage.homeTitle().isDisplayed());
+        try{
 
+        Assertions.assertTrue(homePage.homeTitle().isDisplayed());
+        Report.extentTest.log(Status.PASS, "Pagina Acessada com sucesso", Screenshot.capture(driver));
+
+    }catch (Exception e){
+
+        Report.extentTest.log(Status.FAIL, "Não foi possivel acessar a pagina", Screenshot.capture(driver));
+
+        }
     }
 
 

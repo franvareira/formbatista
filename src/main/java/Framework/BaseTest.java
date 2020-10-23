@@ -19,14 +19,16 @@ public class BaseTest extends DriverManager{
     }
 
     @BeforeEach
-    public void setUp() throws IOException {
+    public void setUp() {
 
+        Report.setExtentReport();
         getDriver().get(url);
     }
 
     @AfterEach
     public void tearDown(){
 
+        Report.endReport();
         quitDriver();
 
     }

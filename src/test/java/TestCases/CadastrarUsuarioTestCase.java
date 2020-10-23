@@ -1,7 +1,10 @@
 package TestCases;
 
 import Framework.BaseTest;
+import Framework.Report;
+import Framework.Screenshot;
 import Task.HomeTask;
+import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -12,9 +15,24 @@ public class CadastrarUsuarioTestCase extends BaseTest {
 
 
     @Test
-    public void realizarCadastro() throws InterruptedException {
+    public void realizarCadastro() {
 
-        homeTask.acessaPageAutomacaoWeb();
+        try{
+
+            Report.startReport("Cadastrando Novo Usuario");
+
+            homeTask.acessaPageAutomacaoWeb();
+
+
+
+
+
+        }catch (Exception e){
+
+             Report.extentTest.log(Status.ERROR, e.getMessage(), Screenshot.captureBase64(driver));
+        }
+
+
 
     }
 }
